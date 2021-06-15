@@ -39,7 +39,10 @@ namespace Collections
 
         public void Print()
         {
-            LoopOver(Console.Write);
+            LoopOver((Object item) =>
+            {
+                Console.Write($"{item}\n");
+            });
         }
 
         private void LoopOver(Action<Object> methodToExecute)
