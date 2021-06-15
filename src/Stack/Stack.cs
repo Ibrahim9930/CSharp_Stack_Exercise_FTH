@@ -1,48 +1,52 @@
 using System.Collections.Generic;
+using System;
 namespace Collections
 {
     public class Stack<T>
     {
-        private LinkedList<T> _dataList;
+        private LinkedList<T> _elements;
 
         public int Size
         {
             get
             {
-                return _dataList.Count;
+                return _elements.Count;
             }
         }
 
         public Stack()
         {
+            _elements = new LinkedList<T>();
         }
 
         public bool Push(T newElement)
         {
-            //TODO: implement
-            return false;
+            _elements.AddFirst(newElement);
+            return true;
         }
 
         public T Pop()
         {
-            //TODO: implement
-            return default(T);
-        }
-
-        public void Print()
-        {
-            //TODO: implement
+            var popedElement = _elements.First.Value;
+            _elements.RemoveFirst();
+            return popedElement;
         }
 
         public T Peak()
         {
-            //TODO: implement
-            return default(T);
+            return _elements.First.Value;
         }
 
+        public void Print(Action<T> d)
+        {
+            foreach (var item in _elements)
+            {
+                d(item);
+            }
+        }
         public void Clear()
         {
-            //TODO: implement
+            _elements.Clear();
         }
     }
 }
