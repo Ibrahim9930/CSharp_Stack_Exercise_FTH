@@ -37,11 +37,16 @@ namespace Collections
             return _elements.First.Value;
         }
 
-        public void Print(Action<T> d)
+        public void Print()
+        {
+            LoopOver(Console.Write);
+        }
+
+        private void LoopOver(Action<Object> methodToExecute)
         {
             foreach (var item in _elements)
             {
-                d(item);
+                methodToExecute(item);
             }
         }
         public void Clear()
